@@ -32,7 +32,7 @@ return {
 	["Fire"] = {21,nil,{"Color","color3","Enabled","bool","Heat","number","SecondaryColor","color3","Size","number"}},
 	["Smoke"] = {22,nil,{"Color","color3","Enabled","bool","Opacity","number","RiseVelocity","number","Size","number"}},
 	["Sparkles"] = {62,nil,{"Enabled","bool","SparkleColor","color3"}},
-	["ParticleEmitter"] = {36,nil,{"LightEmission","number","Texture","content","ZOffset","number","Acceleration","vector3","Drag","number","LockedToPart","bool","VelocityInheritance","number","EmissionDirection","NormalId","Enabled","bool","Lifetime","numberrange","Rate","number","Rotation","numberrange","RotSpeed","numberrange","Speed","numberrange","VelocitySpread","number"}},
+	["ParticleEmitter"] = {36,nil,{"Color","colorsequence","LightEmission","number","Size","numbersequence","Texture","content","ZOffset","number","Acceleration","vector3","Drag","number","LockedToPart","bool","VelocityInheritance","number","EmissionDirection","NormalId","Enabled","bool","Lifetime","numberrange","Rate","number","Rotation","numberrange","RotSpeed","numberrange","Speed","numberrange","VelocitySpread","number","Transparency","numbersequence"}},
 	["Explosion"] = {97,nil,{"BlastPressure","number","BlastRadius","number","DestroyJointRadiusPercent","number","ExplosionType","ExplosionType","Position","vector3"}},
 	["ForceField"] = {81,nil,{}},
 	["BloomEffect"] = {117,nil,{"Enabled","bool","Intensity","number","Size","number","Threshold","number"}},

@@ -16,6 +16,8 @@ local WIDTH = {
 	brickcolor = 3,
 	udim2 = 4,
 	cframe = 6,
+	colorsequence = 1,
+	numbersequence = 1,
 }
 
 local ID_OVERRIDES = {
@@ -290,9 +292,38 @@ local function decodeValue(propertyType, tokens, index)
 		return UDim2.new(num(token), num(tokens[index + 1]), num(tokens[index + 2]), num(tokens[index + 3]))
 	elseif propertyType == "cframe" then
 		return makeCFrame(tokens, index)
+	elseif propertyType == "colorsequence" then
+		local keypoints = {}
+		for i = 1, num(token) do
+			local at = index + 1 + (i - 1) * 4
+			keypoints[i] = ColorSequenceKeypoint.new(num(tokens[at]), color(tokens, at + 1))
+		end
+		local success, sequence = pcall(function()
+			return ColorSequence.new(keypoints)
+		end)
+		return success and sequence
+	elseif propertyType == "numbersequence" then
+		local keypoints = {}
+		for i = 1, num(token) do
+			local at = index + 1 + (i - 1) * 3
+			keypoints[i] = NumberSequenceKeypoint.new(num(tokens[at]), num(tokens[at + 1]), num(tokens[at + 2]))
+		end
+		local success, sequence = pcall(function()
+			return NumberSequence.new(keypoints)
+		end)
+		return success and sequence
 	end
 
 	return num(token)
+end
+
+local function fieldWidth(propertyType, tokens, pos)
+	if propertyType == "colorsequence" then
+		return 1 + 4 * (tonumber(tokens[pos]) or 0)
+	elseif propertyType == "numbersequence" then
+		return 1 + 3 * (tonumber(tokens[pos]) or 0)
+	end
+	return WIDTH[propertyType] or 1
 end
 
 local function parse(tokens)
@@ -338,7 +369,7 @@ local function parse(tokens)
 		end
 
 		for _, field in ipairs(row.schema) do
-			local width = WIDTH[field.type] or 1
+			local width = fieldWidth(field.type, tokens, pos)
 			if tokens[pos + width - 1] == nil then
 				error("Importer: data ends early (missing chunks)", 0)
 			end
