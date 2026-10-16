@@ -1,0 +1,18 @@
+return {
+	["Head"] = 1,
+	["Torso"] = 2,
+	["Left Arm"] = 3,
+	["Right Arm"] = 4,
+	["Left Leg"] = 5,
+	["Right Leg"] = 6,
+	["Handle"] = 7,
+	["RootJoint"] = 8,
+	["Left Hip"] = 9,
+	["Left Shoulder"] = 10,
+	["Neck"] = 11,
+	["Right Hip"] = 12,
+	["Right Shoulder"] = 13,
+	["HumanoidRootPart"] = 14,
+	["Root Hip"] = 15,
+	["rbxasset://textures/face.png"] = 16,
+}

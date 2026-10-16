@@ -1,0 +1,14 @@
+{
+  "name": "ro2016-importer",
+  "tree": {
+    "$className": "DataModel",
+
+    "ServerScriptService": {
+      "$path": "src/ServerScriptService"
+    },
+
+    "StarterGui": {
+      "$path": "src/StarterGui"
+    }
+  }
+}
